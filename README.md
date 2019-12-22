@@ -92,3 +92,30 @@ let getImgInPositionedDivHtml = (function () {
    });
  })();  
 ```
+# day 2
+_22th, Dec, 2019_
+
+Quicksort
+
+```js
+function quickSort (arr) {
+  if (arr.length <= 1) return arr;
+  // use the middle data as a reference value,
+  // and delete this data
+  let refIndex = Math.floor(arr.lenght/2)   // index of ref value
+  let refNum = arr.splice(refIndex, 1)      // get and delete ref value
+
+  let leftArr = [], rightArr = []
+  arr.forEach(item => {
+    if (item < refNum[0]) {
+      leftArr.push(item)
+    }
+    if (item >= refNum[0]) {
+      rightArr.push(item)
+    }
+  })
+  // concat() connect two arrays
+  return quickSort(leftArr).concat(refNum, quickSort(rightArr))
+}
+console.log(quickSort[10,5,15,2,4])
+```

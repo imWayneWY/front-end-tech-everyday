@@ -1,11 +1,13 @@
 I think my basic is not good enough, so I want to practise everyday to improve my skills, and also to practise my English. I want to insist it as long as I can. Ok, let's start.
 
-# day1
+# day 1
 _21th, Dec, 2019_
 
 __What is closure and when to use it?__
+
 A function who have external envirmental varible.
-A simple example: 
+
+Example: 
 
 ```js
 function fun() {
@@ -39,7 +41,7 @@ console.log(fun.getName());   // success!
 
 * scence 2: setTimeout call a function in the reference way.
 
-When we want to pass a refrence of a function type Object to the first param of _setTimeout_, we need to use closure.
+  When we want to pass a refrence of a function type Object to the first param of _setTimeout_, we need to use closure.
 
 ```js
 function fun(num) {

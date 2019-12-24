@@ -119,3 +119,38 @@ function quickSort (arr) {
 }
 console.log(quickSort[10,5,15,2,4])
 ```
+
+# day 3
+_23th, Dec, 2019_
+Use CSS to draw a triangle
+
+use border
+```css
+width: 100px;
+height: 100px;
+border-style: solid;
+border-width: 100px;
+border-color: red forestgreen blue cyan;
+```
+
+then remove height and height
+```css
+border-style: solid;
+border-width: 100px;
+border-color: red forestgreen blue cyan;
+```
+
+change 3 of the borders to transparent
+```css
+border-sytle: solid;
+border-width: 100px;
+border-color: transparent transparent blue transparent;
+```
+
+Now it has shown a triangle, but it still use a rect space, so we change the border-width
+```css
+border-style: solid;
+border-width: 0 100px 100px 100px;
+border-color: transparent transparent blue transparent;
+```
+Success!

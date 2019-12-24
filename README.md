@@ -154,3 +154,25 @@ border-width: 0 100px 100px 100px;
 border-color: transparent transparent blue transparent;
 ```
 Success!
+
+# day 4
+Deep Clone
+
+* Array
+```js
+let newArr = JSON.parse(JSON.stringify(oldArr))
+```
+or
+```js
+let newArr = [...oldArr]
+```
+
+* Object
+```js
+function deepClone (obj) {
+  for (let i in obj) {
+    newObj[i] = typeof obj[i] =- 'object' ? deepClone(obj[i]) : obj[i]
+  }
+  rerturn newObj
+}
+```

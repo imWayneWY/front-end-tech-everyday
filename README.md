@@ -92,6 +92,7 @@ let getImgInPositionedDivHtml = (function () {
    });
  })();  
 ```
+
 # day 2
 _22th, Dec, 2019_
 
@@ -175,4 +176,62 @@ function deepClone (obj) {
   }
   rerturn newObj
 }
+```
+
+# day 5
+reduce()
+
+params:
+> * callback (a function which will call on every item of the array. It will accept 4 params)
+>   + previousValue (the return value from last call)
+>   + currentValue (the current item value)
+>   + currentIndex (the current item index)
+>   + array
+> * initialValue (optional)
+
+* example 1  sum: 
+_calc the sum for array: arr = [1,2,3,4]_
+
+use forEach()
+```js
+let arr = [1,2,3,4],
+sum = 0;
+arr.forEach(function(e){sum += e});  // sum = 10
+```
+
+use map()
+```js
+let arr = [1,2,3,4],
+sum = 0;
+arr.map(function(obj){sum += obj});  // return undefined array. sum = 10
+```
+
+use reduce()
+```js
+let arr = [1,2,3,4];
+arr.reduce(function(pre,cur){return pre + cur});  // return 10
+```
+
+* example 2  max:
+```js
+let max = arr.reduce(function(pre, cur, index, arr){return pre>cur?pre:cur;});
+```
+
+* example 3:
+> I got a data format like this: let arr = [{name: 'brick1'}, {name: 'brick2', {name: 'brick3}}]
+> But I want a format like this: 'brick1, brick2 & brick3'
+> Of course [{name: 'brick1'}] will get 'brick1'
+> and {} will get ''
+
+```js
+let arr = [{name: 'brick1'}, {name: 'brick2', {name: 'brick3}}];
+let result = arr.reduce(function(prev, current, index, arr){
+  if (index === 0) {
+    return current.name;
+  } else if (index === arr.length - 1) {
+    return prev + '&' + current.name;
+  } else {
+    return prev + ',' + current.name;
+  }
+}, '');
 ```

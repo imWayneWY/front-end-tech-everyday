@@ -179,6 +179,7 @@ function deepClone (obj) {
 ```
 
 # day 5
+
 reduce()
 
 params:
@@ -234,4 +235,53 @@ let result = arr.reduce(function(prev, current, index, arr){
     return prev + ',' + current.name;
   }
 }, '');
+```
+
+# day 6
+__debounce and throttle__
+
+_debounce_
+
+Reduce overhead by preventing a function from being called several times in succession. 
+
+```js
+function debounce (fn, time) {
+  let timeout = null;
+  return function() {
+    clearTimeout(timeout)
+    timeout = setTimeout(() => {
+      fn.call(this.arguments)
+    }, time)
+  }
+}
+
+function handler() {
+  console.log('debounce success!')
+}
+
+debounce(handler, 1000)
+```
+
+_throttle_
+Want one last invocation to happen after the throttle is over.
+```js
+function throttle (fn, time) {
+  // use closure to set a varible to judge if the fn can run
+  let canRun = true
+  return function () {
+    // if it is false, stop the function call
+    if (!canRun) return;
+    canRun = false
+    setTimeout(()=> {
+      fn.call(this.arguments)
+      canRun = true
+    }, time)
+  }
+}
+
+function handler() {
+  console.log('throttle success!')
+}
+
+throttle(handler, 1000)
 ```

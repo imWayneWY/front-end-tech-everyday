@@ -1,7 +1,7 @@
 I think my basic is not good enough, so I want to practise everyday to improve my skills, and also to practise my English. I want to insist it as long as I can. Ok, let's start.
 
 # day 1
-_21th, Dec, 2019_
+_21st, Dec, 2019_
 
 __What is closure and when to use it?__
 
@@ -94,7 +94,7 @@ let getImgInPositionedDivHtml = (function () {
 ```
 
 # day 2
-_22th, Dec, 2019_
+_22nd, Dec, 2019_
 
 Quicksort
 
@@ -122,7 +122,7 @@ console.log(quickSort[10,5,15,2,4])
 ```
 
 # day 3
-_23th, Dec, 2019_
+_23rd, Dec, 2019_
 Use CSS to draw a triangle
 
 use border
@@ -157,6 +157,7 @@ border-color: transparent transparent blue transparent;
 Success!
 
 # day 4
+_24th, Dec, 2019_
 Deep Clone
 
 * Array
@@ -179,7 +180,7 @@ function deepClone (obj) {
 ```
 
 # day 5
-
+_25th, Dec, 2019_
 reduce()
 
 params:
@@ -238,6 +239,7 @@ let result = arr.reduce(function(prev, current, index, arr){
 ```
 
 # day 6
+_26th, Dec, 2019_
 __debounce and throttle__
 
 _debounce_
@@ -284,4 +286,91 @@ function handler() {
 }
 
 throttle(handler, 1000)
+```
+
+# day 7
+_27th, Dec, 2019_
+
+CSS Layout
+
+* Header and Footer's height fixed:
+
+```html
+<div class="body">
+  <div class="header"></div>
+  <div class="section">
+    <div class="left"></div>
+    <div class="right"></div>
+  </div>
+  <div class="footer"></div>
+</div>
+```
++ use __position__
+
+```css
+html, body{
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+.body{
+  position: relative;
+  height: 100%;
+}
+.header{
+  height: 80px;
+  background-color: #ccc;
+}
+.section{
+  position: absolute;
+  top: 80px;
+  left: 0;
+  right: 0;
+  bottom: 80px;
+  background-color: #f8f8f9;
+}
+.footer{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background-color: #ccc;
+}
+
+```
+
++ use __flex__
+
+```css
+html, body{
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+.body{
+  height: 100%;
+  background-color: #808695;
+  display: flex;
+  flex-direction: column;
+}
+.header{
+  height: 80px;
+  background-color: #ccc;
+}
+.section{
+  flex: 1;
+  background-color: #f8f8f9;
+}
+.footer{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background-color: #ccc;
+}
+
 ```

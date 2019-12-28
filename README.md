@@ -374,3 +374,114 @@ html, body{
 }
 
 ```
+
+# day 8
+_28th, Dec, 2019_
+
+* Header's height fixed. Navigation on the left and it's width is fixed
+
+```html
+<div class="body">
+  <div class="header"></div>
+  <div class="section">
+    <div class="left"></div>
+    <div class="right"></div>
+  </div>
+  <div class="footer"></div>
+</div>
+```
+
++ position
+
+```css
+body{
+  height: 100%;
+  position: relative;
+  background-color: #f5f7f9;
+}
+.header{
+  height: 80px;
+  background-color: #515A6E;
+}
+.section{
+  background-color: #F5F7F9;
+  position: absolute;
+  left: 0;
+  top: 80px;
+  bottom: 0;
+  right: 0;
+}
+.left{
+  background-color: #fff;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 100px;
+}
+.right{
+  background-color: #F5F7F9;
+  position: absolute;
+  top: 0;
+  left: 100px;
+  bottom: 0;
+  right: 0;
+}
+```
+
++ float + margin
+```css
+.body{
+  height: 100%;
+  position: relative;
+}
+.header{
+  height: 80px;
+  background-color: #515A6E;
+}
+.section{
+  background-color: #AFC7de;
+  position: absolute;
+  left: 0;
+  top: 80px;
+  bottom: 0;
+  right: 0;
+}
+.left{
+  background-color: #fff;
+  float: left;
+  width: 100px;
+  height: 100%;
+}
+.right{
+  background-color: #F5F7F9;
+  height: 100%;
+  margin-left: 100px;
+}
+```
+
++ flex
+```css
+.body{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.header{
+  height: 80px;
+  background-color: #515A6E;
+}
+.section{
+  background-color: #AFC7DE;
+  flex: 1;
+  display: flex;
+}
+.left{
+  background-color: #fff;
+  width: 100px;
+}
+.right{
+  flex: 1;
+  background-color: #F5F7F9;
+}
+```

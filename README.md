@@ -485,3 +485,130 @@ body{
   background-color: #F5F7F9;
 }
 ```
+
+
+
+# day 9
+_29th, Dec, 2019_
+* Holy Grail layout
+
+```html
+<div class="body">
+    <div class="header"></div>
+    <div class="section">
+      <div class="left"></div>
+      <div class="center">111</div>
+      <div class="right"></div>
+    </div>
+</div>
+```
+
++ flex
+
+```css
+.header{
+  height: 80px;
+  background-color: #515a6e;
+}
+.section{
+  background-color: #afc7de;
+  flex: 1;
+  display: flex;
+}
+.left{
+  background-color: #fff;
+  width: 100px;
+}
+.center{
+  flex: 1;
+  background-color: $f5f7f9;
+}
+.right{
+  width: 100px;
+  background-color: #fff;
+}
+```
+
++ position
+
+```css
+.body{
+  height: 100%;
+  position: relative;
+}
+.header{
+  height: 80px;
+  background-color: #515a6e;
+}
+.section{
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 80px;
+  bottom: 0;
+  right: 0;
+  background-color: #afc7de;
+}
+.left{
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  background-color: #fff;
+  width: 100px;
+}
+.center{
+  height: 100%;
+  margin-left: 100px;
+  margin-right: 100px;
+  background-color: #f5f7f9;
+}
+.right{
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 100px;
+  background-color: #fff;
+}
+```
+
++ float + margin
+
+```css
+.body{
+  height: 100%;
+  position: relative;
+}
+.header{
+  height: 80px;
+  background-color: #515a6e;
+}
+.section{
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 80px;
+  bottom: 0;
+  right: 0;
+  background-color: #afc7de;
+}
+.left{
+  float: left;
+  background-color: #fff;
+  width: 100px;
+  height: 1000%
+}
+.center{
+  height: 100%;
+  margin-right: 100px;
+  margin-left: 100px;
+  background-color: #f5f7f9;
+}
+.right{
+  float: right;
+  height: 100%;
+  width: 100px;
+  background-color: #fff;
+}
+```

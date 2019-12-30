@@ -612,3 +612,21 @@ _29th, Dec, 2019_
   background-color: #fff;
 }
 ```
+
+# day 10
+_30,Dec,2019_
+Write a function to deal with number, add a ',' in every 3 numbers.
+
+```js
+function test (num) {
+  let arr1 = [], arr2 = [], arr = []  // arr1 is used for the numbers before Decimal point, and arr2 is used for after that
+  arr = num.toString().split('.')
+  arr2 = arr[1] ? [...arr[1]] : []
+  arr1 = [...arr[0]]
+  let newArr1 = arr1.map((item, index) => arr1.length === (index+1) && (index+1)%3 === 0 ? item+',' : item )
+  let newArr2 = arr2.map((item, index) => arr2.length === (index+1) && (index+1)%3 === 0 ? item+',' : item )
+  newArr2.unshift('.')
+  console.log(newArr1.concat(newArr2).join(''))
+}
+test(123456789.123)
+```

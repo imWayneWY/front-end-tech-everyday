@@ -630,3 +630,107 @@ function test (num) {
 }
 test(123456789.123)
 ```
+
+# day 11
+_31,Dec,2019_
+The last day of 2019, almost forgot this -_-b
+* Difference between Webpack, Grunt, and Grunt
+
+Webpack is _Bundler_ . Grunt  and Gulp is _Task Runner_
+
++ Grunt
+  Grunt is earlier than Gulp. They all use JavaScript to  achieve functions of sell script. like use jshint to check the code.
+
+```js
+// Gruntfile.js
+module.exports = function(grunt) {
+  grunt.initConfig({
+    // js格式检查任务
+    jshint: {
+      src: 'src/test.js'
+    }
+    //  代码压缩打包任务
+    uglify: {}
+  });
+  // 导入任务插件
+  grunt.loadnpmTasks('grunt-contrib-uglify');
+  // 注册自定义任务, 如果有多个任务可以添加到数组中
+  grunt.regusterTask('default', ['jshint'])
+}
+```
+
++ Gulp
+  Gulp takes advantage of Grunt, the config is easier. Use Stream to simplify the config and output of the tasks.
+```js
+// gulpfile.js
+var gulp = require('gulp');
+var jshint = require('gulp-jshint');
+var uglify = require('gulp-uglify');
+
+// 代码检查任务 gulp 采取了pipe 方法，用流的方法直接往下传递
+gulp.task('lint', function() {
+  return gulp.src('src/test.js')
+    .pipe(jshint())
+    .pipe(jshint.reporter('default'));
+});
+
+// 压缩代码任务
+gulp.task('compress'， function() {
+  return gulp.src('src/test.js')
+    .pipe(uglify())
+    .pipe(gulp.dest('build'));
+});
+
+// 将代码检查和压缩组合，新建一个任务
+gulp.task('default', ['lint', 'compress']);
+```
+
++ Webpack
+  use loader, can use ES6, and code splitting. It is a powerful tool.
+```js
+'use strict'
+const path = require('path')
+const webpack = require('webpack')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const merge = require('webpack-merge')
+const utils = require('./utils')
+
+var config = {
+  // 入口
+  entry: {
+    app: './src/main.js'
+  },
+  // 出口
+  output: {
+    path: config.build.assetsRoot,
+    filename: '[name].js',
+    publicPath: process.env.NODE_ENV === 'production'
+      ? config.build.assetsPublicPath
+      : config.dev.assetsPublicPath
+  },
+  // 加载器配置（需要加载器转化的模块类型）
+  module: {
+    rules: [
+      {
+        test: '/\.css$/',
+        use: [ 'style-loader', 'css-loader' ]
+      }
+    ]
+  }
+  // 插件
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env': require('../config/dev.env')
+    }),
+    new webpack.HotModuleReplacementPlugin(),
+    new HtmlWebpackPlugin({
+      filename: 'index.html',
+      template: 'index.html',
+      inject: true
+    }),
+  ]
+
+}
+
+module.exports = config
+```

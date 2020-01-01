@@ -614,7 +614,7 @@ _29th, Dec, 2019_
 ```
 
 # day 10
-_30,Dec,2019_
+_30th,Dec,2019_
 Write a function to deal with number, add a ',' in every 3 numbers.
 
 ```js
@@ -632,7 +632,7 @@ test(123456789.123)
 ```
 
 # day 11
-_31,Dec,2019_
+_31st,Dec,2019_
 The last day of 2019, almost forgot this -_-b
 * Difference between Webpack, Grunt, and Grunt
 
@@ -733,4 +733,28 @@ var config = {
 }
 
 module.exports = config
+```
+
+# day 12
+_1st, Jan, 2017_
+
+use react hooks to build a counter
+
+```js
+import React, {useEffect, useState} from 'react'
+
+function Counter() {
+  const [count, setCount] = useState(0)
+  useEffect(()=> {
+    const timer = setInterval(() => {
+      setCount(count => count+1)
+    }, 1000)
+
+    return ()=>{
+      clearInterval(timer)
+    }
+  }, [])
+
+  return <h1>{count}</h1>
+}
 ```

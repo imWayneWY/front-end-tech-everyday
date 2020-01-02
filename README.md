@@ -736,7 +736,7 @@ module.exports = config
 ```
 
 # day 12
-_1st, Jan, 2017_
+_1st, Jan, 2020_
 
 use react hooks to build a counter
 
@@ -758,3 +758,29 @@ function Counter() {
   return <h1>{count}</h1>
 }
 ```
+
+# day 13
+_2nd, Dec, 2020_
+
+Create and Inheritance Class
+
++ create
+new a function, add method and property in prototype
+
++ inheritance
+  * prototype
+    ```js
+    function Cat(){}
+    Cat.prototype = new Animal();
+    Cat.protptype.name = 'cat';
+
+    var cat = new Cat();
+    ```
+  * constructor
+    ```js
+    function Cat(name) {
+      Animal.call(this);
+      this.name = name || 'Tom';
+    }
+    var cat = new Cat();
+    ```

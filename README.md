@@ -928,3 +928,21 @@ app.use('/graphql', expressGraphQL({
 }))
 app.listen(5000, ()=> console.log('Server Running'))
 ```
+
+# day 14
+_4th, Jan, 2020_
+Why we need keys in React?
+Keys is a mark used for track which elements in a list are updated, added, or removed.
+```js
+render(){
+  return(
+    <ul>
+      {this.state.todoItems.map(({item, key}) => {
+        return <li key={key}>{item}</li>
+      })}
+    </ul>
+  )
+}
+```
+When develop, we have to make sure every key in the element is unique. React need key value's help to judge wether this element need rerender in the DIFF method.
+

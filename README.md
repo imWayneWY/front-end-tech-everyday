@@ -929,7 +929,7 @@ app.use('/graphql', expressGraphQL({
 app.listen(5000, ()=> console.log('Server Running'))
 ```
 
-# day 14
+# day 15
 _4th, Jan, 2020_
 Why we need keys in React?
 Keys is a mark used for track which elements in a list are updated, added, or removed.
@@ -946,3 +946,30 @@ render(){
 ```
 When develop, we have to make sure every key in the element is unique. React need key value's help to judge wether this element need rerender in the DIFF method.
 
+
+
+# day 16
+_5th, Jan, 2020_
+What's the difference between __createElement__ and __cloneElement__
+* React.createElement(): JSX use React.createElement to build React element. It has 3 params:
+  + tag name: like div, span, or React Component.
+  + props
+  + child components
+```js
+React.createElement(
+  type,
+  [props],
+  [...children]
+)
+```
+
+* React.cloneElement(): It is pretty similar with createElement(), but only the first param is different.
+  + React element, the new element will copy the old element.
+
+```js
+React.cloneElement(
+  element,
+  [props],
+  [...children]
+)
+```

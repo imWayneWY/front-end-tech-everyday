@@ -1027,3 +1027,26 @@ removeDuplicates(nums)
 ```
 
 My code works in nodejs environment, I don't know why it doesn't work in Leetcode
+
+
+# day 18
+_7th, Jan, 2020_
+
+what's the output of the code below?
+```js
+const shape = {
+  radius: 10,
+  diameter() {
+    return this.radius * 2;
+  },
+  perimeter: () => 2 * Math.PI * this.radius
+};
+
+shape.diameter();
+shape.perimeter();
+```
+
+answer: 20 and NaN
+
+diameter is a regular function but perimeter is an arrow function.
+Arrow function's this is pointing to the context when run it. It means when we run perimeter, it is in the windows context. And windows doesn't have radius.

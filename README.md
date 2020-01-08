@@ -1050,3 +1050,94 @@ answer: 20 and NaN
 
 diameter is a regular function but perimeter is an arrow function.
 Arrow function's this is pointing to the context when run it. It means when we run perimeter, it is in the windows context. And windows doesn't have radius.
+
+# day 19
+_8th, Jan, 2020_
+
+How to change a html5 web to amp
+
+1. add this line to the bottom of the <head> tag:
+```html
+<script async src="https://cdn.ampproject.org/v0.js"></script>
+```
+then we can use #development=1 to debug
+
+for example: 
+>>> http://localhost:8000/article.amp.html#development=1
+
+2. Debug
+  * The mandatory tag 'meta charset=utf-8' is missing or incorrect.
+    Add the following code as the first line of the <head> tag:
+    ```html
+    <meta charset="utf-8" />
+    ```
+  
+  * The mandatory tag 'link rel=canonical' is missing or incorrect.
+    add the following code below the <meta charset="utf-8" /> tag:
+    ```html
+    <link rel="canonical" href="/article.html">
+    ```
+
+  * The mandatory attribute '⚡' is missing in tag 'html ⚡ for top-level html', or The mandatory tag 'html ⚡ for top-level html' is missing or incorrect.
+    adding the ⚡attribute to the <html> tag like so:
+    ```html
+    <html ⚡ lang="en">
+    ```
+    or
+    ```html
+    <html amp lang="en">
+    ```
+  * The mandatory tag 'meta name=viewport' is missing or incorrect.
+    add the following HTML snippet to the <head> tag:
+    ```html
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    ```
+
+  * The attribute 'href' in tag 'link rel=stylesheet for fonts' is set to the invalid value 'base.css'.
+    This is because the css file. In AMP, all stylesheet rules must be embedded in the AMP document using <style amp-custom></style> tags, or as inline styles.
+    So we need to remove the <link> tag of the css in the head and replace it with an inline <style amp-custom></style> tag
+    remove:
+    ```html
+    <link href="base.css" rel="stylesheet" />
+    ```
+    Copy all the styles from the base.css file into the <style amp-custom></style> tags
+    ```html
+    <style amp-custom>
+
+      /* The content from base.css */
+
+    </style>
+    ```
+
+  * The tag 'script' is disallowed except in specific forms.
+    In general, scripts in AMP are only allowed if they follow two major requirements:
+
+    + All JavaScript must be asynchronous (i.e., include the async attribute in the script tag).
+    + The JavaScript is for the AMP library and for any AMP components on the page.
+
+    So we need to remove the unnecessary js file or change it to AMP component
+  
+  * The mandatory tag 'noscript enclosure for boilerplate' is missing or incorrect.
+    or The mandatory tag 'head > style : boilerplate' is missing or incorrect.
+    or The mandatory tag 'noscript > style : boilerplate' is missing or incorrect.
+
+    Every AMP document requires the following AMP boilerplate code:
+    ```html
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    ```
+    Add the boilerplate code to the bottom of the <head> tag of your document.
+
+
+  * The tag 'img' may only appear as a descendant of tag 'noscript'. Did you mean 'amp-img'?
+    Replace the <img> tag with the above <amp-img> tag 
+    ```html
+    <amp-img src="mountains.jpg"></amp-img>
+    ```
+  
+  * Layout not supported: container The implied layout 'CONTAINER' is not supported by tag 'amp-img'.
+    Because amp-img is not a direct substitute of the traditional HTML img tag. There are additional requirements when using amp-img.
+    ```html
+    <amp-img src="mountains.jpg" layout="responsive" width="266" height="150"></amp-img>
+    ```
+
+    layout="responsive" can make the image responsive

@@ -1052,6 +1052,7 @@ diameter is a regular function but perimeter is an arrow function.
 Arrow function's this is pointing to the context when run it. It means when we run perimeter, it is in the windows context. And windows doesn't have radius.
 
 # day 19
+
 _8th, Jan, 2020_
 
 How to change a html5 web to amp
@@ -1141,3 +1142,42 @@ for example:
     ```
 
     layout="responsive" can make the image responsive
+
+
+# day 20, 21
+_Tur, Fri, 9th.10th, Jan, 2020_
+
+I learned vue this days. Sorry for didn't update here.
+https://juejin.im/entry/5a54b747518825734216c3df
+
+# day 22
+_Sat, 11th, Jan, 2020_
+Given an array, rotate the array to the right by k steps, where k is non-negative.
+Example 1:
+
+>Input: [1,2,3,4,5,6,7] and k = 3
+>Output: [5,6,7,1,2,3,4]
+>Explanation:
+>rotate 1 steps to the right: [7,1,2,3,4,5,6]
+>rotate 2 steps to the right: [6,7,1,2,3,4,5]
+>rotate 3 steps to the right: [5,6,7,1,2,3,4]
+Example 2:
+
+>Input: [-1,-100,3,99] and k = 2
+>Output: [3,99,-1,-100]
+>Explanation: 
+>rotate 1 steps to the right: [99,-1,-100,3]
+>rotate 2 steps to the right: [3,99,-1,-100]
+
+My answer
+```js
+var rotate = function(nums, k) {
+    var temp = nums;
+    for (var i=0; i<k; i++) {
+        let num = temp.splice(-1,1);
+        temp.splice(0,0,...num);
+    }
+    console.log(temp)
+    return temp;
+};
+```
